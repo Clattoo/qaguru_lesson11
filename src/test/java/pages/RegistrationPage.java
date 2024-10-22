@@ -127,6 +127,7 @@ public class RegistrationPage {
     }
 
     public void clickSubmit() {
+
         submitButton.click();
     }
 
@@ -137,6 +138,7 @@ public class RegistrationPage {
     }
 
     public void checkUnsuccessfulRegistration() {
+
         modalTitle.shouldNotBe(exist);
     }
 
