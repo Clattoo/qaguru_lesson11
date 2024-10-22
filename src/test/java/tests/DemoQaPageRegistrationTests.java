@@ -80,7 +80,6 @@ public class DemoQaPageRegistrationTests extends TestBase {
     }
 
     @Test
-    @Tag("demoqa_auto")
     public void negativeRegistrationTest() {
         registrationPage.openPage()
                 .setFirstName(firstName)
