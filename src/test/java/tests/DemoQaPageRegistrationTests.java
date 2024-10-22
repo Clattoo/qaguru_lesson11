@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
@@ -8,6 +9,7 @@ public class DemoQaPageRegistrationTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
+    @Tag("demoqa_auto")
     void successfulRegistrationTest() {
         registrationPage.openPage()
                 .setFirstName("Ivan")
@@ -40,6 +42,7 @@ public class DemoQaPageRegistrationTests extends TestBase {
     }
 
     @Test
+    @Tag("demoqa_auto")
     public void successfulMinDataRegistrationTest() {
         registrationPage.openPage()
                 .setFirstName("Ivan")
@@ -56,6 +59,7 @@ public class DemoQaPageRegistrationTests extends TestBase {
     }
 
     @Test
+    @Tag("demoqa_auto")
     public void negativeRegistrationTest() {
         registrationPage.openPage()
                 .setFirstName("Ivan")
