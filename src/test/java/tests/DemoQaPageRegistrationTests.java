@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import utils.RandomUtils;
 
+import static io.qameta.allure.Allure.step;
+
 public class DemoQaPageRegistrationTests extends TestBase {
 
 
@@ -32,66 +34,78 @@ public class DemoQaPageRegistrationTests extends TestBase {
     @Tag("demoqa_auto")
     void successfulRegistrationTest() {
 
-        registrationPage.openPage()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setEmail(userEmail)
-                .setGender(userGender)
-                .setPhoneNumber(userPhone)
-                .setDateOfBirth(userDayOfBirth, userMonthOfBirth, userYearOfBirth)
-                .setSubjects(userSubjects)
-                .setHobbies(userHobbies)
-                .setUserUploadPicture(userUploadPicture)
-                .setUserCurrentAddress(userCurrentAddress)
-                .setUserState(userState)
-                .setUserCity(userCity)
-                .clickSubmit();
+        step("Заполнение формы DemoQA", () -> {
+            registrationPage.openPage()
+                    .setFirstName(firstName)
+                    .setLastName(lastName)
+                    .setEmail(userEmail)
+                    .setGender(userGender)
+                    .setPhoneNumber(userPhone)
+                    .setDateOfBirth(userDayOfBirth, userMonthOfBirth, userYearOfBirth)
+                    .setSubjects(userSubjects)
+                    .setHobbies(userHobbies)
+                    .setUserUploadPicture(userUploadPicture)
+                    .setUserCurrentAddress(userCurrentAddress)
+                    .setUserState(userState)
+                    .setUserCity(userCity)
+                    .clickSubmit();
+        });
+
+        step("Проверка заполненных данных", () -> {
+            registrationPage.checkResults("Student Name", firstName + " " + lastName)
+                    .checkResults("Student Email", userEmail)
+                    .checkResults("Gender", userGender)
+                    .checkResults("Mobile", userPhone)
+                    .checkResults("Date of Birth", userDayOfBirth + " " + userMonthOfBirth + "," + userYearOfBirth)
+                    .checkResults("Subjects", userSubjects)
+                    .checkResults("Hobbies", userHobbies)
+                    .checkResults("Picture", userUploadPicture)
+                    .checkResults("Address", userCurrentAddress)
+                    .checkResults("State and City", userState + " " + userCity);
+        });
 
 
-        // Проверка результатов теста
-
-        registrationPage.checkResults("Student Name", firstName + " " + lastName)
-                .checkResults("Student Email", userEmail)
-                .checkResults("Gender", userGender)
-                .checkResults("Mobile", userPhone)
-                .checkResults("Date of Birth", userDayOfBirth + " " + userMonthOfBirth + "," + userYearOfBirth)
-                .checkResults("Subjects", userSubjects)
-                .checkResults("Hobbies", userHobbies)
-                .checkResults("Picture", userUploadPicture)
-                .checkResults("Address", userCurrentAddress)
-                .checkResults("State and City", userState + " " + userCity);
     }
 
     @Test
     @Tag("demoqa_auto")
     public void successfulMinDataRegistrationTest() {
-        registrationPage.openPage()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setGender(userGender)
-                .setPhoneNumber(userPhone)
-                .clickSubmit();
+
+        step("Заполнение формы DemoQA", () -> {
+                    registrationPage.openPage()
+                            .setFirstName(firstName)
+                            .setLastName(lastName)
+                            .setGender(userGender)
+                            .setPhoneNumber(userPhone)
+                            .clickSubmit();
+                });
 
         // Проверка результатов теста
 
-        registrationPage.checkResults("Student Name", firstName + " " + lastName)
-                .checkResults("Gender", userGender)
-                .checkResults("Mobile", userPhone);
+        step("Проверка данных", () -> {
+            registrationPage.checkResults("Student Name", firstName + " " + lastName)
+                    .checkResults("Gender", userGender)
+                    .checkResults("Mobile", userPhone);
+        });
     }
 
     @Test
     @Tag("demoqa_auto")
     public void negativeRegistrationTest() {
-        registrationPage.openPage()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setGender(userGender)
-                .setPhoneNumber(userIncorrectPhone)
-                .clickSubmit();
+        step("Заполнение формы DemoQA", () -> {
+                    registrationPage.openPage()
+                            .setFirstName(firstName)
+                            .setLastName(lastName)
+                            .setGender(userGender)
+                            .setPhoneNumber(userIncorrectPhone)
+                            .clickSubmit();
+                });
 
         // Проверка результатов теста
 
-        registrationPage.checkUnsuccessfulRegistration();
+        step("Проверка данных", () -> {
+            registrationPage.checkUnsuccessfulRegistration();
+        });
     }
 
 }
