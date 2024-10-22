@@ -11,6 +11,7 @@ import utils.RandomUtils;
 
 import static io.qameta.allure.Allure.step;
 
+@DisplayName("Регистрация DemoQA")
 public class DemoQaPageRegistrationTests extends TestBase {
 
 
