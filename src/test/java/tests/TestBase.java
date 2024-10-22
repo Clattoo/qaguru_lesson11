@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class TestBase {
     @BeforeAll
-    static void setUp () {
+    static void setUp() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
@@ -35,10 +35,6 @@ public class TestBase {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
-    }
-
-    @AfterAll
-    static void closeAllWindows() {
         Selenide.closeWebDriver();
     }
 }
