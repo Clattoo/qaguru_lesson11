@@ -1,5 +1,9 @@
 package tests;
 
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
@@ -31,6 +35,9 @@ public class DemoQaPageRegistrationTests extends TestBase {
             userCity = randomUtils.getRandomUserCity(userState);
 
     @Test
+    @Owner("Maxim Shlemin")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Заполнение данных DemoQA в полном объеме")
     @Tag("demoqa_auto")
     void successfulRegistrationTest() {
 
@@ -68,6 +75,9 @@ public class DemoQaPageRegistrationTests extends TestBase {
     }
 
     @Test
+    @Owner("Maxim Shlemin")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Заполнение данных DemoQA в минимальном объеме")
     @Tag("demoqa_auto")
     public void successfulMinDataRegistrationTest() {
 
@@ -90,6 +100,9 @@ public class DemoQaPageRegistrationTests extends TestBase {
     }
 
     @Test
+    @Owner("Maxim Shlemin")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Негативный сценарий регистрации. Ввод неккоректного номера телефона")
     @Tag("demoqa_auto")
     public void negativeRegistrationTest() {
         step("Заполнение формы DemoQA", () -> {
