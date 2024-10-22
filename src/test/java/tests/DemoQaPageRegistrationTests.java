@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import utils.RandomUtils;
@@ -28,6 +29,7 @@ public class DemoQaPageRegistrationTests extends TestBase {
             userCity = randomUtils.getRandomUserCity(userState);
 
     @Test
+    @Tag("demoqa_auto")
     void successfulRegistrationTest() {
 
         registrationPage.openPage()
@@ -61,6 +63,7 @@ public class DemoQaPageRegistrationTests extends TestBase {
     }
 
     @Test
+    @Tag("demoqa_auto")
     public void successfulMinDataRegistrationTest() {
         registrationPage.openPage()
                 .setFirstName(firstName)
@@ -77,6 +80,7 @@ public class DemoQaPageRegistrationTests extends TestBase {
     }
 
     @Test
+    @Tag("demoqa_auto")
     public void negativeRegistrationTest() {
         registrationPage.openPage()
                 .setFirstName(firstName)
