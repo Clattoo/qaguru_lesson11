@@ -6,31 +6,8 @@ import org.junit.jupiter.api.Test;
 public class SystemPropertiesTests {
 
     @Test
-    void systemPropertiesTest () {
-        System.setProperty("browser", "chrome");
-        String browser = System.getProperty("browser");
-
-        System.out.println(browser); // chrome
-    }
-
-    @Test
-    void systemProperties2Test () {
-        String browser = System.getProperty("browser", "mozilla");
-
-        System.out.println(browser); // mozilla
-    }
-
-    @Test
-    void systemProperties3Test () {
-        System.setProperty("browser", "chrome");
-        String browser = System.getProperty("browser", "mozilla");
-
-        System.out.println(browser); // mozilla
-    }
-
-    @Test
     @Tag("property")
-    void systemProperties4Test () {
+    void browserChooserTest() {
         String browser = System.getProperty("browser", "mozilla");
 
         System.out.println(browser); // mozilla
@@ -38,5 +15,13 @@ public class SystemPropertiesTests {
         // mozilla
 
         // gradle property_test -Dbrowser=opera
+    }
+
+    @Test
+    @Tag("property")
+    void browserScreenResolutionTest() {
+        String resolution = System.getProperty("resolution", "1920x1080");
+
+        System.out.println(resolution);
     }
 }
