@@ -18,8 +18,8 @@ public class TestBase {
         Configuration.pageLoadStrategy = "eager";
 
         Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
-        Configuration.browserSize = System.getProperty("resolution");
+        Configuration.browserVersion = System.getProperty("browserVersion", "121.0");
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.remote = System.getProperty("wdhost");
 
         SelenideLogger.addListener("allure", new AllureSelenide());
